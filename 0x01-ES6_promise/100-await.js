@@ -1,10 +1,10 @@
-import { uploadPhoto, createUser } from './utilis';
+import { uploadPhoto, createUser } from './utils';
 
-export default async function asyncUploadUser() {
+async function asyncUploadUser() {
   try {
     const photo = await uploadPhoto();
     const userP = await createUser();
-
+    const [photoResponse, userResponse] = await Promise.all([photo, userP]);
     return {
       photo,
       userP,
@@ -16,3 +16,4 @@ export default async function asyncUploadUser() {
     };
   }
 }
+export default asyncUploadUser;
