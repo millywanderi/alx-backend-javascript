@@ -49,3 +49,33 @@ const printTeacher: PrintTeacherFunction = (firstName, lastName) => {
   return `${firstLetter}. ${$formattedLastName}`;
 }
 console.log(printTeacher('john', 'doe'));
+
+// create a Class named StudentClass
+interface StudentClassConstructor {
+  new (firstName: string, lastName: string): StudentClass;
+}
+
+interface StudentClassMethods {
+  workOnHomework(): string;
+  displayName(): string;
+}
+
+interface StudentInterface extends StudentClassConstructor, StudentClassMethods {}
+
+class StudentClass implements StudentClassMethods {
+  private firstName: string;
+  private lastName: string;
+
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  workOnHomework(): string {
+    return 'Currently working';
+  }
+}
+
+const currStudent = new StudentClass('Kylie', 'Kinsley');
+console.log(currStudent.workOnHomework());  // Currently working
+onsole.log(currStudent.displayName());  // Kylie
