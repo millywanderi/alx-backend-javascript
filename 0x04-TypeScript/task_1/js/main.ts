@@ -37,3 +37,15 @@ const director: Directors = {
   numberOfReports: 10
 }
 console.log(director);
+
+// Function for printing teacher
+interface PrintTeacherFunction {
+  (firstName: string, lastName: string): string;
+}
+const printTeacher: PrintTeacherFunction = (firstName, lastName) => {
+  const firstLetter = firstName.charAt(0).toUpperCase();
+  const formattedLastName = lastName.charAt(0).toUpperCase();
+
+  return `${firstLetter}. ${$formattedLastName}`;
+}
+console.log(printTeacher('john', 'doe'));
