@@ -9,7 +9,7 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
   fs.readFile(dataPath, 'utf-8', (err, data) => {
     if (err) {
       reject(new Error('Cannot load the database'));
-	}
+    }
     if (data) {
       const fileLines = data
         .toString('utf-8')
@@ -27,11 +27,11 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
         const field = studentRecord[studentRecord.length - 1];
         if (!Object.keys(studentGroups).includes(field)) {
           studentGroups[field] = [];
-	    }
+        }
         const studentEntries = studentPropNames
           .map((propName, idx) => [propName, studentPropValues[idx]]);
         studentGroups[field].push(Object.fromEntries(studentEntries));
-	  }
+      }
 
       const totalStudents = Object
         .values(studentGroups)
