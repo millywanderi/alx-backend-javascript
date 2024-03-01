@@ -1,5 +1,5 @@
 const Utilis = {
-  calculateNumber(type, a, b) {
+  calculateNumber (type, a, b) {
     const roundedA = Math.round(a);
     const roundedB = Math.round(b);
 
@@ -10,10 +10,7 @@ const Utilis = {
       return roundedA - roundedB;
     }
     if (type === 'DIVIDE') {
-      if (roundedB === 0) {
-        return 'Error';
-      }
-      return roundedA / roundedB;
+      return roundedB ===0 ? 'Error' : roundedA / roundedB;
     }
     return 0;
   },
