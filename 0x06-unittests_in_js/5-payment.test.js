@@ -1,37 +1,25 @@
-const { expect } = require('chai');
 const sinon = require('sinon');
+const { expect } = require('chai');
 const sendPaymentRequestToApi = require('./5-payment');
 
 describe('sendPaymentRequestToApi', () => {
-  let consoleSpy;
-
+  let logger;
   beforeEach(() => {
-    consoleSpy = sinon.spy(console, 'log');
+    if (!logger) {
+      logger = sinon.spy(console);
+    }
   });
-
   afterEach(() => {
-    consoleSpy.restore();
+    logger.log.resetHistory();
   });
-
-  it('calls sendPaymentRequestToApi with 100, and 20: and logs "The total is: 120" once', () => {
-    const totalAmount = 100;
-    const totalShipping = 20;
-    const expectedSum = Utilis.calculateNumber('SUM', totalAmount, totalShipping);
-
-    sendPaymentRequestToApi(totalAmount, totalShipping);
-
-    expect(consoleSpy.callOnce).to.be.true;
-    expect(consoleSpy.callWith(`The total is: ${expectedSum}`)).to.be.true;
+  it('sendPaymentRequestToApi(100, 20) logs "The total is: 120" to the console', () => {
+    sendPaymentRequestToApi(100, 20);
+    expect(logger.log.calledWith('The total is: 120')).to.be.true;
+    expect(logger.log.calledOnce).to.be.true;
   });
-
-  it('calls sendPaymentRequestToApi with 10, and 10: and logs "The total is: 20" once', () => {
-    const totalAmount = 10;
-    const totalShipping = 10;
-    const expectedSum = Utilis.calculateNumber('SUM', totalAmount, totalShipping);
-
-    sendPaymentRequestToApi(totalAmount, totalShipping);
-
-    expect(consoleSpy.callOnce).to.be.true;
-    expect(consoleSpy.callWith(`The total is: ${expectedSum}`)).to.be.true;
+  it('sendPaymentRequestToApi(10, 10) logs "The total is: 20" to the console', () => {
+    sendPaymentRequestToApi(10, 10);
+    expect(logger.log.calledWith('The total is: 20')).to.be.true;
+    expect(logger.log.calledOnce).to.be.true;
   });
 });
