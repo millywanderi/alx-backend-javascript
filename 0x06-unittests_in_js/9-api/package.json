@@ -5,7 +5,7 @@
   "main": "api.js",
   "author": "Bezaleel Olakunori <bezaleeloci@gmail.com>",
   "private": true,
-  "licence", "MIT",
+  "license": "MIT",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha"
   },
@@ -31,5 +31,4 @@
     "npm": "8.x",
     "yarn": "1.x"
   }
-
 }
